@@ -1,5 +1,6 @@
 import time
 import random
+import os
 
 def linear_search(arr, target):
     for i in range(len(arr)):  # O(n)
@@ -61,6 +62,7 @@ def prepare_test_data():
     targets = {}                                     # O(1)
     
     # Создаем директорию для данных, если её нет
+    os.makedirs('lab1/src/data', exist_ok=True)     # O(1)
     
     for size in sizes:                              # O(len(sizes))
         # Генерируем массив
@@ -71,13 +73,8 @@ def prepare_test_data():
         filename = f'lab1/src/data/array_{size}.txt'     # O(1)
         save_array_to_file(arr, filename)           # O(n)
         
-        # Определяем целевые элементы для тестирования
-        targets[size] = {                           # O(1)
-            'first': arr[0],                        # O(1)
-            'last': arr[-1],                        # O(1)
-            'middle': arr[size // 2],               # O(1)
-            'missing': -1                           # O(1)
-        }
+        # Определяем ТОЛЬКО СРЕДНИЙ элемент для тестирования
+        targets[size] = arr[size // 2]              # O(1)
     
     return arrays, targets                          # O(1)
 # Общая сложность: O(Σ(n_i log n_i)) где n_i - размеры массивов
@@ -94,21 +91,23 @@ def run_performance_analysis():
     for size, arr in arrays.items():                # O(len(sizes))
         print(f"Тестирование массива размером {size}...")  # O(1)
         
-        for target_type, target_value in targets[size].items():  # O(4)
-            # Линейный поиск
-            linear_time = measure_search_time(linear_search, arr, target_value, iterations)  # O(n * n)
-            
-            # Бинарный поиск
-            binary_time = measure_search_time(binary_search, arr, target_value, iterations)  # O(n log n)
-            
-            results.append({                         # O(1)
-                'size': size,
-                'target_type': target_type,
-                'linear_time': linear_time,
-                'binary_time': binary_time
-            })
-            
-            print(f"  {target_type}: линейный={linear_time:.6f}s, бинарный={binary_time:.6f}s")  # O(1)
+        # Берем ТОЛЬКО СРЕДНИЙ элемент для тестирования
+        target_value = targets[size]                # O(1)
+        
+        # Линейный поиск
+        linear_time = measure_search_time(linear_search, arr, target_value, iterations)  # O(iterations * n)
+        
+        # Бинарный поиск
+        binary_time = measure_search_time(binary_search, arr, target_value, iterations)  # O(iterations * log n)
+        
+        results.append({                            # O(1)
+            'size': size,
+            'target_type': 'middle',                # Теперь только один тип
+            'linear_time': linear_time,
+            'binary_time': binary_time
+        })
+        
+        print(f"  средний элемент: линейный={linear_time:.6f}s, бинарный={binary_time:.6f}s")  # O(1)
     
-    return results                                   # O(1)
+    return results                                  # O(1)
 # Общая сложность: O(Σ(iterations * (n_i + log n_i)))

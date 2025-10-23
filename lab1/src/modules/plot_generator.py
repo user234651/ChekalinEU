@@ -40,7 +40,7 @@ def plot_search_performance(results):
     plt.yscale('log')                                # O(1)
     
     plt.tight_layout()                               # O(1)
-    plt.savefig('lab1/src/data/search_performance.png')   # O(1)
+    plt.savefig('lab1/report/search_performance.png')   # O(1)
     plt.show()                                       # O(1)
 # Общая сложность: O(n log n)
 
@@ -69,6 +69,6 @@ def plot_comparsion(results):
     plt.xscale('log')                                # O(1)
     
     plt.tight_layout()                               # O(1)
-    plt.savefig('lab1/src/data/search_comparison.png')    # O(1)
+    plt.savefig('lab1/report/search_comparison.png')    # O(1)
     plt.show()                                       # O(1)
 # Общая сложность: O(n log n)
