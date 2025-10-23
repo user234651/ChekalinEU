@@ -45,7 +45,6 @@ def is_palindrome_deque(sequence):
     return True
 
 def demonstrate_solutions():
-    """Демонстрация работы всех решений"""
     print("=== Проверка сбалансированности скобок ===")
     test_cases = [
         "({[]})",

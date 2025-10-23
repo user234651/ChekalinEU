@@ -61,19 +61,15 @@ def prepare_test_data():
     arrays = {}                                      # O(1)
     targets = {}                                     # O(1)
     
-    # Создаем директорию для данных, если её нет
     os.makedirs('lab1/src/data', exist_ok=True)     # O(1)
     
     for size in sizes:                              # O(len(sizes))
-        # Генерируем массив
         arr = generate_sorted_array(size)           # O(n log n)
         arrays[size] = arr                          # O(1)
         
-        # Сохраняем в файл
         filename = f'lab1/src/data/array_{size}.txt'     # O(1)
         save_array_to_file(arr, filename)           # O(n)
         
-        # Определяем ТОЛЬКО СРЕДНИЙ элемент для тестирования
         targets[size] = arr[size // 2]              # O(1)
     
     return arrays, targets                          # O(1)
@@ -91,7 +87,6 @@ def run_performance_analysis():
     for size, arr in arrays.items():                # O(len(sizes))
         print(f"Тестирование массива размером {size}...")  # O(1)
         
-        # Берем ТОЛЬКО СРЕДНИЙ элемент для тестирования
         target_value = targets[size]                # O(1)
         
         # Линейный поиск

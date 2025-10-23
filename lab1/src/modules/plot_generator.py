@@ -2,10 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 def plot_search_performance(results):
-    # Группируем результаты по размеру массива
     sizes = sorted(set(r['size'] for r in results))  # O(n log n)
     
-    # Среднее время для каждого размера
     linear_times = []                                # O(1)
     binary_times = []                                # O(1)
     
@@ -16,10 +14,8 @@ def plot_search_performance(results):
         linear_times.append(avg_linear)              # O(1)
         binary_times.append(avg_binary)              # O(1)
     
-    # Создаем график
     plt.figure(figsize=(12, 8))                      # O(1)
     
-    # График линейного поиска
     plt.subplot(2, 1, 1)                            # O(1)
     plt.plot(sizes, linear_times, 'b-o', label='Линейный поиск')  # O(n)
     plt.xlabel('Размер массива')                     # O(1)
@@ -28,8 +24,7 @@ def plot_search_performance(results):
     plt.grid(True)                                   # O(1)
     plt.legend()                                     # O(1)
     plt.yscale('log')                                # O(1)
-    
-    # График бинарного поиска
+
     plt.subplot(2, 1, 2)                            # O(1)
     plt.plot(sizes, binary_times, 'r-o', label='Бинарный поиск')  # O(n)
     plt.xlabel('Размер массива')                     # O(1)
