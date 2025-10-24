@@ -12,18 +12,15 @@ def compare_insertion_performance():
     linked_list_times = []
     
     for size in sizes:
-        # Тест для list
         def test_list_insert():
             lst = list(range(size))
             for i in range(100):
                 lst.insert(0, i)
         
         list_time = timeit.timeit(test_list_insert, number=10)
-        
-        # Тест для LinkedList
+
         def test_linked_list_insert():
             ll = LinkedList()
-            # Предварительно заполняем список
             for i in range(size):
                 ll.insert_at_start(i)
             for i in range(100):

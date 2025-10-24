@@ -47,14 +47,14 @@ def load_array_from_file(filename):
 def measure_search_time(search_func, arr, target, iterations=100):
     total_time = 0                                   # O(1)
     
-    for _ in range(iterations):                      # O(iterations)
+    for _ in range(iterations):                      # O(n)
         start_time = time.time()                     # O(1)
         search_func(arr, target)                     # O(сложность search_func)
         end_time = time.time()                       # O(1)
         total_time += (end_time - start_time)        # O(1)
     
     return total_time / iterations                   # O(1)
-# Общая сложность: O(iterations * сложность search_func)
+# Общая сложность: O(n * сложность search_func)
 
 def prepare_test_data():
     sizes = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000, 1000000]  # O(1)
@@ -73,11 +73,11 @@ def prepare_test_data():
         targets[size] = arr[size // 2]              # O(1)
     
     return arrays, targets                          # O(1)
-# Общая сложность: O(Σ(n_i log n_i)) где n_i - размеры массивов
+# Общая сложность: O(Σ(n log n))
 
 def run_performance_analysis():
     print("Подготовка тестовых данных...")          # O(1)
-    arrays, targets = prepare_test_data()           # O(Σ(n_i log n_i))
+    arrays, targets = prepare_test_data()           # O(Σ(n log n))
     
     results = []                                    # O(1)
     iterations = 10                                 # O(1)
@@ -97,7 +97,7 @@ def run_performance_analysis():
         
         results.append({                            # O(1)
             'size': size,
-            'target_type': 'middle',                # Теперь только один тип
+            'target_type': 'middle',
             'linear_time': linear_time,
             'binary_time': binary_time
         })
