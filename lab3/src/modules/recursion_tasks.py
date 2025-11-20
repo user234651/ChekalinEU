@@ -40,8 +40,6 @@ def walk_dir_recursive(path: str, prefix: str = "") -> Tuple[List[str], int]:
             max_depth = max(max_depth, 1 + sub_depth)
     return lines, max_depth
 
-# The recursion depth here equals the deepest nesting level of directories visited.
-
 def hanoi_moves(n: int, src: str, dst: str, aux: str, moves: List[Tuple[str,str]] = None) -> List[Tuple[str,str]]:
     if moves is None:
         moves = []

@@ -34,21 +34,17 @@ def experiment_fibonacci(n_values):
     return times_naive, times_memo
 
 def run_full_experiments():
-    # 1) Compare naive vs memo for n=35 (as requested)
     print("Сравнение для n=35 (наивная и мемоизированная)...")
     cmp35 = memoization.compare_naive_and_memo(35)
     print("n =", cmp35['n'])
     print("Наивная: value={}, time={:.3f}s, calls={}".format(cmp35['naive']['value'], cmp35['naive']['time'], cmp35['naive']['calls']))
     print("Мемоизация: value={}, time={:.6f}s, calls={}".format(cmp35['memo']['value'], cmp35['memo']['time'], cmp35['memo']['calls']))
 
-    # 2) Экспериментальное исследование: измерим времена для n=0..35
     ns = list(range(0, 36))
     times_naive = []
     times_memo = []
     for n in ns:
-        # naive (guard: naive can be slow for n>30, but user wanted experimental — we do it up to 35; could take time)
         t0 = timer()
-        # use fibonacci_naive_counted to count
         from modules.memoization import reset_naive_counter, fibonacci_naive_counted
         reset_naive_counter()
         val_naive = fibonacci_naive_counted(n)
@@ -67,7 +63,6 @@ def run_full_experiments():
         times_memo.append(memo_time)
         print(f"n={n}: naive_time={naive_time:.6f}s memo_time={memo_time:.6f}s")
 
-    # 3) Сохранить график
     fig_path = os.path.join(REPORT_DIR, "fib_times.png")
     plt.figure(figsize=(10,6))
     plt.plot(ns, times_naive, label='naive')
@@ -83,12 +78,12 @@ def run_full_experiments():
     plt.close()
     print("График сохранён в", fig_path)
 
-    # 4) Бинарный поиск (пример)
+    # Бинарный поиск (пример)
     arr = list(range(0, 100, 2))
     idx = recursion_tasks.binary_search_recursive(arr, 42)
     print("binary_search_recursive: index of 42 in even array:", idx)
 
-    # 5) Обход файловой системы (пример на текущей папке проекта)
+    # Обход файловой системы (пример на текущей папке проекта)
     start_path = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     print("Рекурсивный обход (корень):", start_path)
     lines, max_depth = recursion_tasks.walk_dir_recursive(start_path)
@@ -97,7 +92,7 @@ def run_full_experiments():
         f.write("\n".join(lines))
     print(f"Дерево сохранено в {tree_path}. Макс глубина (директорий): {max_depth}")
 
-    # 6) Ханойские башни пример n=4 (печать последовательности)
+    # Ханойские башни пример n=4 (печать последовательности)
     n_hanoi = 4
     moves = recursion_tasks.hanoi_moves(n_hanoi, 'A', 'C', 'B')
     moves_path = os.path.join(REPORT_DIR, f"hanoi_{n_hanoi}_moves.txt")
