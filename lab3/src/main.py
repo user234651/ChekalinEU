@@ -3,10 +3,10 @@ import csv
 import matplotlib
 matplotlib.use('Agg')
 
-import matplotlib.pyplot as plt  # requirements includes matplotlib
+import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 
-from modules import recursion, memoization, recursion_tasks
+from modules import recursion, memoization, recursion_tasks, performance_analysis
 
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "report")
 REPORT_DIR = os.path.normpath(REPORT_DIR)
