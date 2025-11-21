@@ -29,9 +29,7 @@ def main():
 
     print("Saving and plotting results...")
     plot_results.save_summary_table(df, out_dir=args.out)
-    # plot for random kind
     plot_results.plot_time_vs_size(df, kind='random', out_dir=args.out)
-    # plot for size 5000 if exists otherwise first size
     target_size = 5000 if 5000 in args.sizes else args.sizes[0]
     plot_results.plot_time_vs_kind(df, size=target_size, out_dir=args.out)
 

@@ -6,7 +6,7 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from timeit import default_timer as timer
 
-from modules import recursion, memoization, recursion_tasks, performance_analysis
+from modules import recursion, memoization, recursion_tasks
 
 REPORT_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "report")
 REPORT_DIR = os.path.normpath(REPORT_DIR)
@@ -16,15 +16,12 @@ def experiment_fibonacci(n_values):
     times_naive = []
     times_memo = []
     for n in n_values:
-        # naive timing (use the counted version to ensure call counting) -- may be slow
         memoization.reset_naive_counter()
         t0 = timer()
-        val_naive = recursion.fibonacci_naive(n) if n <= 20 else None  # prevent huge waits: compute naive up to 20 directly
+        val_naive = recursion.fibonacci_naive(n) if n <= 20 else None
         t1 = timer()
-        # But user requested comparison for n=35 specifically; we'll measure 35 using counted versions in memoization.compare...
         times_naive.append((val_naive, t1 - t0))
 
-        # memoized timing
         fib_mem, get_count, reset_mem = memoization.make_memoized_fib()
         reset_mem()
         t0 = timer()
@@ -51,7 +48,6 @@ def run_full_experiments():
         t1 = timer()
         naive_time = t1 - t0
 
-        # memoized
         fib_mem, get_count, reset_mem = memoization.make_memoized_fib()
         reset_mem()
         t0 = timer()
@@ -67,7 +63,7 @@ def run_full_experiments():
     plt.figure(figsize=(10,6))
     plt.plot(ns, times_naive, label='naive')
     plt.plot(ns, times_memo, label='memoized')
-    plt.yscale('log')  # log-scale to visualize wide range
+    plt.yscale('log')
     plt.xlabel('n')
     plt.ylabel('time (s, log scale)')
     plt.title('Fibonacci: naive vs memoized')

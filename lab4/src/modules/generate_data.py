@@ -17,7 +17,6 @@ def generate_array(n: int, kind: str, seed: int = None) -> List[int]:
         arr.sort(reverse=True)
         return arr
     elif kind == 'almost_sorted':
-        # 95% sorted, 5% randomly permuted (or random values)
         arr = list(np.random.randint(-10**6, 10**6, size=n))
         arr.sort()
         k = max(1, int(0.05 * n))

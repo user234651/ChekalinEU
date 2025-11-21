@@ -14,7 +14,7 @@ def binary_search_recursive(arr: List[int], target: int, lo: int = 0, hi: int = 
     else:
         return binary_search_recursive(arr, target, lo, mid - 1)
 
-# Complexity: O(log n) time, recursion depth O(log n).
+# Сложность: время O(log n), глубина рекурсии O(log n).
 
 def walk_dir_recursive(path: str, prefix: str = "") -> Tuple[List[str], int]:
     lines = []
@@ -53,5 +53,5 @@ def hanoi_moves(n: int, src: str, dst: str, aux: str, moves: List[Tuple[str,str]
     hanoi_moves(n - 1, aux, dst, src, moves)
     return moves
 
-# Time complexity: O(2^n) time (number of moves).
-# Recursion depth: n (call chain decreases by 1 each level).
+# Временная сложность: O(2^n) (число перемещений).
+# Глубина рекурсии: n (цепочка вызовов уменьшается на 1 каждый уровень).

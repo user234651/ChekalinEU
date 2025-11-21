@@ -5,9 +5,8 @@ def factorial(n: int) -> int:
         return 1
     return n * factorial(n - 1)
 
-# Complexity: O(n) time.
-# Max recursion depth: n (calls along a chain of length n).
-
+# Сложность: время O(n).
+# Максимальная глубина рекурсии: n (цепочка из n вызовов).
 
 def fibonacci_naive(n: int) -> int:
     if n < 0:
@@ -18,9 +17,8 @@ def fibonacci_naive(n: int) -> int:
         return 1
     return fibonacci_naive(n - 1) + fibonacci_naive(n - 2)
 
-# Time complexity: O(phi^n) exponential (~1.618^n).
-# Max recursion depth: n (the longest chain is fib(n)->fib(n-1)->...)
-
+# Временная сложность: O(phi^n) экспоненциальная (~1.618^n).
+# Максимальная глубина рекурсии: n (самая длинная цепочка — fib(n)->fib(n-1)->...)
 
 def pow_fast(a: float, n: int) -> float:
     if n < 0:
@@ -36,5 +34,5 @@ def pow_fast(a: float, n: int) -> float:
         half = pow_fast(a, (n - 1) // 2)
         return a * half * half
 
-# Time complexity: O(log n) multiplications.
-# Max recursion depth: O(log n) (depth proportional to number of times n halved).
+# Временная сложность: O(log n) умножений.
+# Максимальная глубина рекурсии: O(log n) (глубина пропорциональна количеству делений n пополам).

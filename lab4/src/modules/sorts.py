@@ -3,12 +3,12 @@ import heapq
 
 def bubble_sort(arr: List[int]) -> List[int]:
     """
-    Bubble Sort
-    Time complexity:
-      Worst: O(n^2)
-      Average: O(n^2)
-      Best: O(n)
-    Space complexity: O(1) extra
+    Пузырьковая сортировка (Bubble Sort)
+    Временная сложность:
+      Худший случай: O(n^2)
+      Средний случай: O(n^2)
+      Лучший случай: O(n)
+    Пространственная сложность: O(1) дополнительной памяти
     """
     a = arr.copy()
     n = len(a)
@@ -24,12 +24,12 @@ def bubble_sort(arr: List[int]) -> List[int]:
 
 def insertion_sort(arr: List[int]) -> List[int]:
     """
-    Insertion Sort
-    Time complexity:
-      Worst: O(n^2)
-      Average: O(n^2)
-      Best: O(n)
-    Space complexity: O(1) extra
+    Сортировка вставками (Insertion Sort)
+    Временная сложность:
+      Худший случай: O(n^2)
+      Средний случай: O(n^2)
+      Лучший случай: O(n)
+    Пространственная сложность: O(1) дополнительной памяти
     """
     a = arr.copy()
     for i in range(1, len(a)):
@@ -43,19 +43,19 @@ def insertion_sort(arr: List[int]) -> List[int]:
 
 def merge_sort(arr: List[int]) -> List[int]:
     """
-    Merge Sort (stable)
-    Time complexity:
-      Worst: O(n log n)
-      Average: O(n log n)
-      Best: O(n log n)
-    Space complexity: O(n) extra
+    Сортировка слиянием (Merge Sort, устойчивая)
+    Временная сложность:
+      Худший случай: O(n log n)
+      Средний случай: O(n log n)
+      Лучший случай: O(n log n)
+    Пространственная сложность: O(n) дополнительной памяти
     """
     if len(arr) <= 1:
         return arr.copy()
     mid = len(arr) // 2
     left = merge_sort(arr[:mid])
     right = merge_sort(arr[mid:])
-    # merge
+    # слияние
     result = []
     i = j = 0
     while i < len(left) and j < len(right):
@@ -68,12 +68,12 @@ def merge_sort(arr: List[int]) -> List[int]:
 
 def quick_sort(arr: List[int]) -> List[int]:
     """
-    Quick Sort (Lomuto partition, recursive)
-    Time complexity:
-      Worst: O(n^2) (плохой выбор опорного элемента; например, отсортированные входы)
-      Average: O(n log n)
-      Best: O(n log n)
-    Space complexity: O(log n) average (рекурсивный стек), O(n) worst
+    Быстрая сортировка (Quick Sort, разбиение Ломуто, рекурсивная)
+    Временная сложность:
+      Худший случай: O(n^2) (плохой выбор опорного элемента; например, отсортированные данные)
+      Средний случай: O(n log n)
+      Лучший случай: O(n log n)
+    Пространственная сложность: O(log n) в среднем (рекурсивный стек), O(n) в худшем случае
     """
     a = arr.copy()
     def _quick(a, lo, hi):
@@ -98,12 +98,12 @@ def quick_sort(arr: List[int]) -> List[int]:
 
 def heap_sort(arr: List[int]) -> List[int]:
     """
-    Heap Sort
-    Time complexity:
-      Worst: O(n log n)
-      Average: O(n log n)
-      Best: O(n log n)
-    Space complexity: O(n) extra if using heaps created from data (here we make a copy)
+    Пирамидальная сортировка (Heap Sort)
+    Временная сложность:
+      Худший случай: O(n log n)
+      Средний случай: O(n log n)
+      Лучший случай: O(n log n)
+    Пространственная сложность: O(n) дополнительной памяти, если создаётся куча из данных (здесь используется копия)
     """
     a = arr.copy()
     heapq.heapify(a)

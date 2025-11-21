@@ -4,7 +4,6 @@ import timeit
 _naive_call_count = 0
 
 def fibonacci_naive_counted(n: int) -> int:
-    """Наивная фиб с подсчётом рекурсивных вызовов (глобальный счётчик)."""
     global _naive_call_count
     _naive_call_count += 1
     if n == 0:
