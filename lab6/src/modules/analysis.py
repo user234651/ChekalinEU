@@ -26,7 +26,6 @@ def build_balanced_tree(size):
 
     return tree, values
 
-
 def build_degenerate_tree(size):
     """
     Генерация вырожденного дерева (возрастающая последовательность).
@@ -49,7 +48,6 @@ def build_degenerate_tree(size):
 
     return tree, values
 
-
 def build_degenerate_tree_iterative(size):
     """
     Построение вырожденного дерева напрямую, без рекурсий.
@@ -71,7 +69,6 @@ def build_degenerate_tree_iterative(size):
 
     return tree, values
 
-
 def measure_find_time(tree, search_values, num_searches=1000):
     """
     Замер среднего времени поиска.
@@ -86,7 +83,6 @@ def measure_find_time(tree, search_values, num_searches=1000):
     end_time = time.perf_counter()
 
     return (end_time - start_time) / num_searches
-
 
 def run_analysis():
     print("=== АНАЛИЗ ПРОИЗВОДИТЕЛЬНОСТИ BST ===\n")
@@ -167,7 +163,6 @@ def run_analysis():
         print("Не удалось получить данные для построения графиков.")
 
     return sizes, balanced_times, degenerate_times, balanced_heights, degenerate_heights
-
 
 if __name__ == "__main__":
     run_analysis()
