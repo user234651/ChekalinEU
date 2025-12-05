@@ -27,7 +27,7 @@ def heapsort_using_largeheap(array):
 
 def inplace_heapsort(array):
     """
-    In-place пирамидальная сортировка. Преобразует массив в max-кучу и сортирует.
+    In-place пирамидальная сортировка.
 
     Сложность: O(n log n), Память: O(1)
     """

@@ -11,10 +11,10 @@ report_dir = os.path.join(base_dir, 'report')
 
 os.makedirs(report_dir, exist_ok=True)
 
-output_path = os.path.join(report_dir, 'analysis.png')
+measure_output_path = os.path.join(report_dir, 'measure_analysis.png')
+compare_output_path = os.path.join(report_dir, 'compare_analysis.png')
 
 def measure_heap_operations():
-    """Измеряем время ключевых операций над кучей. Сложность отмечена там, где важно."""
     print("=== АНАЛИЗ ВЫЧИСЛИТЕЛЬНОЙ СЛОЖНОСТИ ДЕЙСТВИЙ С HEAP ===\n")
     print()
 
@@ -70,13 +70,12 @@ def measure_heap_operations():
     plt.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(measure_output_path, dpi=300, bbox_inches='tight')
     plt.show()
 
     return sizes, build_heap_times, sequential_insert_times, extract_all_times
 
 def compare_sorting_algorithms():
-    """Сравнение времени разных алгоритмов сортировки (ориентиры по сложности)."""
     print("\n=== СРАВНЕНИЕ АЛГОРИТМОВ СОРТИРОВКИ ===\n")
 
     sizes = [100, 500, 1000, 5000, 10000]
@@ -161,7 +160,7 @@ def compare_sorting_algorithms():
     plt.grid(True, alpha=0.3)
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=300, bbox_inches='tight')
+    plt.savefig(compare_output_path, dpi=300, bbox_inches='tight')
     plt.show()
 
     return sizes, heapsort_times, quicksort_times, mergesort_times, builtin_sort_times
